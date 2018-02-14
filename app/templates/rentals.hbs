@@ -1,8 +1,8 @@
 <div class="jumbo">
-  <div class="right tomster">
-    <h2>Welcome!</h2>
-    <p>We hope you find exactly what you're looking for in a place to stay.</p>
-  </div>
+  <div class="right tomster"></div>
+
+  <h2>Welcome!</h2>
+  <p>We hope you find exactly what you're looking for in a place to stay.</p>
 
   {{#link-to "about" class="button"}}
     About Us
@@ -10,20 +10,8 @@
 
 </div>
 
-{{#each model as |rental|}}
-
-  {{#rental-listing
-      title=rental.title
-      owner=rental.owner
-      category=rental.category
-      city=rental.city
-      bedrooms=rental.bedrooms}}
-
-    This is a listing
-
-  {{/rental-listing}}
-
+{{#each model as |rentalUnit|}}
+  {{rental-listing rental=rentalUnit}}
 {{/each}}
-
 
 {{outlet}}
