@@ -79,6 +79,15 @@ test('should filter the list of rentals by city', function(assert) {
 });
 
 test('should show more details for a selected rental', function(assert) {
+  // ARRANGE & ACT
+  visit('/rentals')
+  click('a:contains("Grand Old Mansion")')
+  andThen(function() {
+    assert.equal(currentURL(), '/rentals/grand-old-mansion', 'should navigate to show route');
+    assert.equal(find('.show-listing h2').text(), "Grand Old Mansion", 'should list rental title');
+    assert.equal(find('.description').length, 1, 'should list a description of the property');
+  });
+
 });
 
 /*

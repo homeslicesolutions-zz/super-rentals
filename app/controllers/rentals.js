@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import { get } from '@ember/object';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   actions: {
     filterByCity(param) {
       if (param !== '') {

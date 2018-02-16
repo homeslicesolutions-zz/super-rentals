@@ -52,16 +52,26 @@ export default function () {
   });
 */
 
+
+
   this.get('/rentals', function(schema, request) {
+    const {city} = request.queryParams;
+
     const {rentals} = schema;
-    const rentalsCollection = rentals.all();
-    const cityQuery = request.queryParams.city;
-    if (cityQuery) {
-      return rentalsCollection.filter((postModel) => {
-        return postModel.city.toLowerCase().indexOf(cityQuery.toLowerCase()) >= 0;
+
+    if (city) {
+      return rentals.all().filter((postModel) => {
+        return postModel.city.toLowerCase().indexOf(city.toLowerCase()) >= 0;
       });
     } else {
-      return rentalsCollection;
+      return rentals.all();
     }
-  })
+  });
+
+  this.get('/rentals/:id', function(schema, request) {
+    const {id} = request.params;
+    const {rentals} = schema;
+    return rentals.find(id)
+  });
+
 }
