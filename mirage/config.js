@@ -3,6 +3,7 @@ export default function () {
 
   this.logging = true;
 
+  /*
   this.get('/rental-olds', function (schema, request) {
     return {
       data: [
@@ -49,6 +50,7 @@ export default function () {
       ]
     }
   });
+*/
 
   this.get('/rentals', function(schema, request) {
     const {rentals} = schema;

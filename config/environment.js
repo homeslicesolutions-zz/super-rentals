@@ -23,6 +23,9 @@ module.exports = function(environment) {
     }
   };
 
+  // Google maps
+  ENV['GOOGLE_MAPS_API_KEY'] = 'AIzaSyCbaOk_PjWHh0WMZ-uXfE6WKxZe5O2tXj8';
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -45,6 +48,8 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  console.log('ENV', ENV)
 
   return ENV;
 };
