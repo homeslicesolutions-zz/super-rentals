@@ -1,11 +1,13 @@
 export default function () {
   this.namespace = '/api';
 
-  this.get('rentals', function () {
+  this.logging = true;
+
+  this.get('/rental-olds', function (schema, request) {
     return {
       data: [
         {
-          type:       'rentals',
+          type:       'rental-olds',
           id:         'grand-old-mansion',
           attributes: {
             title:       'Grand Old Mansion',
@@ -18,7 +20,7 @@ export default function () {
           }
         },
         {
-          type:       'rentals',
+          type:       'rental-olds',
           id:         'urban-living',
           attributes: {
             title:       'Urban Living',
@@ -33,18 +35,20 @@ export default function () {
         },
         {
           type:       'rentals',
-          id:         'downtown-charm',
+          id:         'downtown-charm-two',
           attributes: {
-            title:       'Downtown Charm',
-            owner:       'Violet Beauregarde',
+            title:       'Downtown Charm Two',
+            owner:       'Violet Beauregarde Two',
             city:        'Portland',
             category:    'Apartment',
             bedrooms:    3,
             image:       'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg',
-            description: 'Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet.'
+            description: 'Two Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet.'
           }
         }
       ]
     }
-  })
+  });
+
+  this.get('/rentals')
 }
