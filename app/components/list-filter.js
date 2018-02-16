@@ -10,7 +10,10 @@ export default Ember.Component.extend({
 
     const initAction = get(this, 'filter');
 
-    initAction('').then(results => set(this, 'results', results))
+    initAction('')
+      .then(allResults => {
+        set(this, 'results', allResults.results);
+      })
   },
 
   actions: {
@@ -18,7 +21,12 @@ export default Ember.Component.extend({
       const filterInputValue = get(this, 'value');
       const filterAction =     get(this, 'filter');
 
-      filterAction(filterInputValue).then(filterResults => set(this, 'results', filterResults));
+      filterAction(filterInputValue)
+        .then((filterResults) => {
+          if (filterResults.query === get(this, 'value')) { // <== just re-assurance
+            set(this, 'results', filterResults.results);
+          }
+        });
     }
   }
 });

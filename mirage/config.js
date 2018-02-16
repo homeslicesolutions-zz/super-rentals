@@ -50,5 +50,16 @@ export default function () {
     }
   });
 
-  this.get('/rentals')
+  this.get('/rentals', function(schema, request) {
+    const {rentals} = schema;
+    const rentalsCollection = rentals.all();
+    const cityQuery = request.queryParams.city;
+    if (cityQuery) {
+      return rentalsCollection.filter((postModel) => {
+        return postModel.city.toLowerCase().indexOf(cityQuery.toLowerCase()) >= 0;
+      });
+    } else {
+      return rentalsCollection;
+    }
+  })
 }
